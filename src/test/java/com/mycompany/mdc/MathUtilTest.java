@@ -156,5 +156,35 @@ public class MathUtilTest {
         assertEquals(p, obtido);
     }
     
+    @Test
+    public void testMdcGeralIndivisiveis() {
+    	final double a = 30;
+    	final double b = 12;
+    	final double esperado = 6;
+    	final double obtido = MathUtil.mdc(a, b);
+    	assertEquals(esperado, obtido);
+    }
+    
+    @Test
+    public void testMdcMultiplosValores() {
+    	final double a = 30;
+    	final double b = 12;
+    	final double c = 4;
+    	final double esperado = 2;
+    	final double obtido = MathUtil.mdc(a, b, c);
+    	assertEquals(esperado, obtido);
+    }
+    
+    @Test
+    public void testMdcNenhumParametro() {
+    	//MathUtil.mdc();
+    	assertThrows(IllegalArgumentException.class, () -> MathUtil.mdc());
+    }
+    
+    @Test
+    public void testMdcNulo() {
+    	//MathUtil.mdc(null);
+     assertThrows(NullPointerException.class, () -> MathUtil.mdc(null));
+    }
     
 }

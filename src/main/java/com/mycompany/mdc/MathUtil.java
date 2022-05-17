@@ -1,6 +1,8 @@
 
 package com.mycompany.mdc;
 
+import java.util.Objects;
+
 /**
  *
  * @author aluno
@@ -33,10 +35,23 @@ public class MathUtil {
          return Math.abs(a); 
      } 
      
-     
-     
+        
        /*throw new UnsupportedOperationException("Não foi possível calcular o MDC com os valores informados.");*/
-       return 1;
+      // return 1;
+     return mdc(a - b, b);
+    }
+    
+    public static double mdc(double ...valores) {
+    	Objects.requireNonNull(valores, "O parâmetro valores não pode ser nulo para calcular o MDC");
+    	
+    	if(valores.length == 0) {
+    		throw new IllegalArgumentException("É preciso indicar ao menos um valor pra calcular o MDC");
+    	}
+    	double a = valores[0];
+    	for(double b : valores) {
+    		a = mdc(a, b);
+    	}
+    	return a;
     }
    
 }
